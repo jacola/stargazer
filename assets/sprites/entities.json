@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "entities.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 103,
+				"h": 394
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "meteors/brown/big1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 101,
+						"h": 84
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 101,
+						"h": 84
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 101,
+						"h": 84
+					}
+				},
+				{
+					"filename": "ships/blue",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 99,
+						"h": 75
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 99,
+						"h": 75
+					},
+					"frame": {
+						"x": 1,
+						"y": 87,
+						"w": 99,
+						"h": 75
+					}
+				},
+				{
+					"filename": "ships/green",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 99,
+						"h": 75
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 99,
+						"h": 75
+					},
+					"frame": {
+						"x": 1,
+						"y": 164,
+						"w": 99,
+						"h": 75
+					}
+				},
+				{
+					"filename": "ships/orange",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 99,
+						"h": 75
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 99,
+						"h": 75
+					},
+					"frame": {
+						"x": 1,
+						"y": 241,
+						"w": 99,
+						"h": 75
+					}
+				},
+				{
+					"filename": "ships/red",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 99,
+						"h": 75
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 99,
+						"h": 75
+					},
+					"frame": {
+						"x": 1,
+						"y": 318,
+						"w": 99,
+						"h": 75
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:fc1ff7f367cd90071bd6d6a64d026f7f:5e1327ad1d5c655effed0f827a4685c0:d80676a5e85c5032e708efda4f84d8e3$"
+	}
+}
