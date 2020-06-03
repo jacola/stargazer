@@ -38,6 +38,7 @@ class PhaserGame extends Phaser.Game {
       parent: "phaser-example",
       width,
       height,
+      pixelArt: true,
       scene: [LoadScene, GameScene, GameOverScene],
     };
 
