@@ -5,12 +5,12 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 103,
-				"h": 394
+				"h": 426
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "meteors/brown/big1",
+					"filename": "asteroids/brown/big1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -113,6 +113,27 @@
 						"w": 99,
 						"h": 75
 					}
+				},
+				{
+					"filename": "items/stars/gold",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 31,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 31,
+						"h": 30
+					},
+					"frame": {
+						"x": 1,
+						"y": 395,
+						"w": 31,
+						"h": 30
+					}
 				}
 			]
 		}
@@ -120,6 +141,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f58b10d94be8fa9b9748e9d476ce4fb3:5e1327ad1d5c655effed0f827a4685c0:d80676a5e85c5032e708efda4f84d8e3$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f170ab4d2ae201a0cf3cecf4d3c60261:c4fa16684299bc63cef02a0b928b6b04:d80676a5e85c5032e708efda4f84d8e3$"
 	}
 }

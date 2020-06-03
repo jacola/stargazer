@@ -39,6 +39,16 @@ class PhaserGame extends Phaser.Game {
       width,
       height,
       pixelArt: true,
+      physics: {
+        default: "matter",
+        matter: {
+          debug: true,
+          gravity: {
+            x: 0,
+            y: 0,
+          },
+        },
+      },
       scene: [LoadScene, GameScene, GameOverScene],
     };
 

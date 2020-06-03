@@ -1,4 +1,4 @@
-import { SCENES, CONSTANTS } from "../constants";
+import { LABELS, SCENES, CONSTANTS } from "../constants";
 
 export class GameScene extends Phaser.Scene {
   constructor() {
@@ -9,12 +9,39 @@ export class GameScene extends Phaser.Scene {
     const { width, height } = this.cameras.main;
     this.add.rectangle(width / 2, height / 2, width, height, 0x111111);
 
-    this.ship = this.add.sprite(
+    this.matter.world.setBounds(0, 0, width, height);
+    this.ship = this.matter.add.sprite(
       width / 2,
       height - 40,
       "entities",
-      "ships/orange"
+      "ships/orange",
+      { label: LABELS.PLAYER }
     );
+
+    this.matter.add.sprite(width / 2, 40, "entities", "items/stars/gold", {
+      label: LABELS.STAR,
+    });
+
+    this.matter.world.on("collisionstart", (event, objA, objB) => {
+      console.log(objA.label, objB.label);
+      let player = null;
+      let objHit = null;
+      if (objA.label === LABELS.PLAYER) {
+        player = objA;
+        objHit = objB;
+      }
+      if (objB.label === LABELS.PLAYER) {
+        player = objB;
+        objHit = objA;
+      }
+
+      if (player) {
+        if (objHit.label === LABELS.STAR) {
+          objHit.gameObject.setVisible(false).setActive(false);
+          objHit.destroy();
+        }
+      }
+    });
 
     // Pointer
     this.pointer = {

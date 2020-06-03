@@ -7,3 +7,9 @@ export const SCENES = {
 export const CONSTANTS = {
   SHIP_SPEED: 5,
 };
+
+export const LABELS = {
+  PLAYER: "PLAYER",
+  STAR: "STAR",
+  ASTROID: "ASTROID",
+};
