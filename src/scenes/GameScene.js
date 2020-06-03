@@ -1,4 +1,4 @@
-import { SCENES } from "../constants";
+import { SCENES, CONSTANTS } from "../constants";
 
 export class GameScene extends Phaser.Scene {
   constructor() {
@@ -9,7 +9,12 @@ export class GameScene extends Phaser.Scene {
     const { width, height } = this.cameras.main;
     this.add.rectangle(width / 2, height / 2, width, height, 0x111111);
 
-    this.add.sprite(width / 2, height - 40, "entities", "ships/orange");
+    this.ship = this.add.sprite(
+      width / 2,
+      height - 40,
+      "entities",
+      "ships/orange"
+    );
 
     // Pointer
     this.pointer = {
@@ -35,9 +40,23 @@ export class GameScene extends Phaser.Scene {
   }
 
   update() {
-    const { pointer } = this;
+    const { pointer, ship } = this;
     if (pointer.isDown) {
-      console.log(pointer.x, pointer.y);
+      const difX = pointer.x - ship.x;
+      const difY = pointer.y - ship.y;
+
+      if (
+        Math.abs(difX) < CONSTANTS.SHIP_SPEED &&
+        Math.abs(difY) < CONSTANTS.SHIP_SPEED
+      ) {
+        ship.x = pointer.x;
+        ship.y = pointer.y;
+      } else {
+        const direction = new Phaser.Math.Vector2(difX, difY).normalize();
+
+        ship.x += direction.x * CONSTANTS.SHIP_SPEED;
+        ship.y += direction.y * CONSTANTS.SHIP_SPEED;
+      }
     }
   }
 }

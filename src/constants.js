@@ -3,3 +3,7 @@ export const SCENES = {
   GAME: "GAME",
   GAME_OVER: "GAME_OVER",
 };
+
+export const CONSTANTS = {
+  SHIP_SPEED: 5,
+};
