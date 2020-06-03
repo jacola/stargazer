@@ -7,9 +7,13 @@ export class GameScene extends Phaser.Scene {
 
   create() {
     const { width, height } = this.cameras.main;
+
+    this.entityLimit = 3;
+    this.entities = [];
+
     this.add.rectangle(width / 2, height / 2, width, height, 0x111111);
 
-    this.matter.world.setBounds(0, 0, width, height);
+    this.matter.world.setBounds(0, -100, width, height + 200);
     this.ship = this.matter.add.sprite(
       width / 2,
       height - 40,
@@ -17,28 +21,28 @@ export class GameScene extends Phaser.Scene {
       "ships/orange",
       { label: LABELS.PLAYER }
     );
+    this.ship.setFixedRotation();
 
-    this.matter.add.sprite(width / 2, 40, "entities", "items/stars/gold", {
-      label: LABELS.STAR,
-    });
+    this.matter.world.on("collisionstart", (event) => {
+      for (let collision of event.pairs) {
+        const { bodyA, bodyB } = collision;
+        // console.log(bodyA.label, bodyB.label, collision);
+        let player = null;
+        let objHit = null;
+        if (bodyA.label === LABELS.PLAYER) {
+          player = bodyA;
+          objHit = bodyB;
+        }
+        if (bodyB.label === LABELS.PLAYER) {
+          player = bodyB;
+          objHit = bodyA;
+        }
 
-    this.matter.world.on("collisionstart", (event, objA, objB) => {
-      console.log(objA.label, objB.label);
-      let player = null;
-      let objHit = null;
-      if (objA.label === LABELS.PLAYER) {
-        player = objA;
-        objHit = objB;
-      }
-      if (objB.label === LABELS.PLAYER) {
-        player = objB;
-        objHit = objA;
-      }
-
-      if (player) {
-        if (objHit.label === LABELS.STAR) {
-          objHit.gameObject.setVisible(false).setActive(false);
-          objHit.destroy();
+        if (player) {
+          if (objHit.label === LABELS.STAR) {
+            objHit.gameObject.setVisible(false).setActive(false);
+            objHit.destroy();
+          }
         }
       }
     });
@@ -84,6 +88,24 @@ export class GameScene extends Phaser.Scene {
         ship.x += direction.x * CONSTANTS.SHIP_SPEED;
         ship.y += direction.y * CONSTANTS.SHIP_SPEED;
       }
+    }
+
+    const { entityLimit, entities } = this;
+
+    if (entities.length < entityLimit) {
+      const newStar = this.matter.add.sprite(
+        10,
+        -80,
+        "entities",
+        "items/stars/gold",
+        {
+          label: LABELS.STAR,
+          id: Math.floor(Math.random() * 1000000),
+        }
+      );
+      newStar.setFrictionAir(0);
+      newStar.setVelocityY(3);
+      entities.push(newStar);
     }
   }
 }
