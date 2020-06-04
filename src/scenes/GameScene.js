@@ -10,6 +10,8 @@ export class GameScene extends Phaser.Scene {
   create() {
     const { width, height } = this.cameras.main;
 
+    this.registry.score = 0;
+
     this.lastSpawn = Date.now();
     this.spawnRate = 500;
     this.entities = [];
@@ -49,6 +51,7 @@ export class GameScene extends Phaser.Scene {
         if (player) {
           if (objHit.parent.label === LABELS.STAR) {
             this.removeEntity(objHit);
+            this.registry.score++;
           } else if (objHit.parent.label === LABELS.ASTEROID) {
             this.scene.start(SCENES.GAME_OVER);
           }
@@ -91,6 +94,16 @@ export class GameScene extends Phaser.Scene {
     this.input.on("pointerup", () => {
       this.pointer.isDown = false;
     });
+
+    // Score UI
+    this.add
+      .sprite(width - 5, 5, "entities", "items/stars/gold")
+      .setOrigin(1, 0)
+      .setDepth(1000)
+      .setScale(2 / 3);
+
+    this.scoreLabel = this.add.bitmapText(width - 30, 5, "Starfont", "");
+    this.scoreLabel.setOrigin(1, 0).setDepth(1000);
   }
 
   removeEntity(obj) {
@@ -160,5 +173,7 @@ export class GameScene extends Phaser.Scene {
       entities.push(newObject);
       this.lastSpawn = Date.now();
     }
+
+    this.scoreLabel.text = this.registry.score;
   }
 }

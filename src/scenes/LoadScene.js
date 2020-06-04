@@ -45,6 +45,12 @@ export class LoadScene extends Phaser.Scene {
 
     this.load.json("shapes", "./assets/shapes.json");
 
+    this.load.bitmapFont(
+      "Starfont",
+      "./assets/starfont.png",
+      "./assets/starfont.xml"
+    );
+
     // Updates
     this.load.on("progress", (percent) => {
       progressBar.displayWidth = barWidth * percent;
