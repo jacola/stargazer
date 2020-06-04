@@ -8,40 +8,55 @@ export class GameScene extends Phaser.Scene {
   create() {
     const { width, height } = this.cameras.main;
 
-    this.entityLimit = 3;
+    this.lastSpawn = Date.now();
+    this.spawnRate = 500;
     this.entities = [];
 
     this.add.rectangle(width / 2, height / 2, width, height, 0x111111);
 
-    this.matter.world.setBounds(0, -100, width, height + 200);
+    const bounds = this.matter.world.setBounds(0, -100, width, height + 200);
+    for (let key in bounds.walls) {
+      bounds.walls[key].label = key;
+      bounds.walls[key].isWall = true;
+    }
+
     this.ship = this.matter.add.sprite(
       width / 2,
       height - 40,
       "entities",
       "ships/orange",
-      { label: LABELS.PLAYER }
+      { label: LABELS.PLAYER, shape: this.cache.json.get("shapes").orange }
     );
     this.ship.setFixedRotation();
 
     this.matter.world.on("collisionstart", (event) => {
       for (let collision of event.pairs) {
         const { bodyA, bodyB } = collision;
-        // console.log(bodyA.label, bodyB.label, collision);
+        console.log(bodyA.parent.label, bodyB.parent.label, collision);
         let player = null;
         let objHit = null;
-        if (bodyA.label === LABELS.PLAYER) {
+        if (bodyA.parent.label === LABELS.PLAYER) {
           player = bodyA;
           objHit = bodyB;
         }
-        if (bodyB.label === LABELS.PLAYER) {
+        if (bodyB.parent.label === LABELS.PLAYER) {
           player = bodyB;
           objHit = bodyA;
         }
 
         if (player) {
-          if (objHit.label === LABELS.STAR) {
-            objHit.gameObject.setVisible(false).setActive(false);
-            objHit.destroy();
+          if (objHit.parent.label === LABELS.STAR) {
+            this.removeEntity(objHit);
+          }
+        }
+
+        // Floor check
+        if (bodyA.isWall || bodyB.isWall) {
+          const wall = bodyA.isWall ? bodyA : bodyB;
+          const obj = bodyA.isWall ? bodyB : bodyA;
+
+          if (wall.label === "bottom" && obj.parent.label === LABELS.STAR) {
+            this.removeEntity(obj);
           }
         }
       }
@@ -70,6 +85,12 @@ export class GameScene extends Phaser.Scene {
     });
   }
 
+  removeEntity(obj) {
+    this.entities = this.entities.filter((e) => e.body.id !== obj.parent.id);
+    obj.gameObject.setVisible(false).setActive(false);
+    obj.parent.destroy();
+  }
+
   update() {
     const { pointer, ship } = this;
     if (pointer.isDown) {
@@ -92,20 +113,24 @@ export class GameScene extends Phaser.Scene {
 
     const { entityLimit, entities } = this;
 
-    if (entities.length < entityLimit) {
+    if (Date.now() > this.lastSpawn + this.spawnRate) {
+      const { width } = this.cameras.main;
+
       const newStar = this.matter.add.sprite(
-        10,
+        width * Math.random(),
         -80,
         "entities",
         "items/stars/gold",
         {
           label: LABELS.STAR,
           id: Math.floor(Math.random() * 1000000),
+          shape: this.cache.json.get("shapes").gold,
         }
       );
       newStar.setFrictionAir(0);
       newStar.setVelocityY(3);
       entities.push(newStar);
+      this.lastSpawn = Date.now();
     }
   }
 }

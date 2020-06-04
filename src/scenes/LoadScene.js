@@ -43,6 +43,8 @@ export class LoadScene extends Phaser.Scene {
       "./assets/sprites/entities.json"
     );
 
+    this.load.json("shapes", "./assets/shapes.json");
+
     // Updates
     this.load.on("progress", (percent) => {
       progressBar.displayWidth = barWidth * percent;
