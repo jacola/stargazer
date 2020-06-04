@@ -49,6 +49,8 @@ export class GameScene extends Phaser.Scene {
         if (player) {
           if (objHit.parent.label === LABELS.STAR) {
             this.removeEntity(objHit);
+          } else if (objHit.parent.label === LABELS.ASTEROID) {
+            this.scene.start(SCENES.GAME_OVER);
           }
         }
 
@@ -139,15 +141,17 @@ export class GameScene extends Phaser.Scene {
           }
         );
       } else if (newType === LABELS.ASTEROID) {
+        const ASTEROIDS = ["big", "med", "small", "tiny"];
+        const size = ASTEROIDS[Math.floor(ASTEROIDS.length * Math.random())];
         newObject = this.matter.add.sprite(
           width * Math.random(),
           -80,
           "entities",
-          "asteroids/brown/big1",
+          `asteroids/brown/${size}`,
           {
             label: LABELS.ASTEROID,
             id: Math.floor(Math.random() * 1000000),
-            shape: this.cache.json.get("shapes").big1,
+            shape: this.cache.json.get("shapes")[size],
           }
         );
       }

@@ -4,13 +4,13 @@
 			"image": "entities.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 103,
-				"h": 426
+				"w": 247,
+				"h": 240
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "asteroids/brown/big1",
+					"filename": "asteroids/brown/big",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -28,6 +28,90 @@
 						"y": 1,
 						"w": 101,
 						"h": 84
+					}
+				},
+				{
+					"filename": "asteroids/grey/big",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 101,
+						"h": 84
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 101,
+						"h": 84
+					},
+					"frame": {
+						"x": 104,
+						"y": 1,
+						"w": 101,
+						"h": 84
+					}
+				},
+				{
+					"filename": "items/stars/gold",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 31,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 31,
+						"h": 30
+					},
+					"frame": {
+						"x": 207,
+						"y": 1,
+						"w": 31,
+						"h": 30
+					}
+				},
+				{
+					"filename": "asteroids/brown/small",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 28
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 28
+					},
+					"frame": {
+						"x": 207,
+						"y": 33,
+						"w": 28,
+						"h": 28
+					}
+				},
+				{
+					"filename": "asteroids/grey/small",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 28
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 28
+					},
+					"frame": {
+						"x": 207,
+						"y": 63,
+						"w": 28,
+						"h": 28
 					}
 				},
 				{
@@ -66,10 +150,52 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 1,
-						"y": 164,
+						"x": 102,
+						"y": 87,
 						"w": 99,
 						"h": 75
+					}
+				},
+				{
+					"filename": "asteroids/brown/med",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 43,
+						"h": 43
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 43,
+						"h": 43
+					},
+					"frame": {
+						"x": 203,
+						"y": 93,
+						"w": 43,
+						"h": 43
+					}
+				},
+				{
+					"filename": "asteroids/grey/med",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 43,
+						"h": 43
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 43,
+						"h": 43
+					},
+					"frame": {
+						"x": 203,
+						"y": 138,
+						"w": 43,
+						"h": 43
 					}
 				},
 				{
@@ -88,7 +214,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 241,
+						"y": 164,
 						"w": 99,
 						"h": 75
 					}
@@ -108,31 +234,52 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 1,
-						"y": 318,
+						"x": 102,
+						"y": 164,
 						"w": 99,
 						"h": 75
 					}
 				},
 				{
-					"filename": "items/stars/gold",
+					"filename": "asteroids/brown/tiny",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 31,
-						"h": 30
+						"w": 18,
+						"h": 18
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 31,
-						"h": 30
+						"w": 18,
+						"h": 18
 					},
 					"frame": {
-						"x": 1,
-						"y": 395,
-						"w": 31,
-						"h": 30
+						"x": 203,
+						"y": 183,
+						"w": 18,
+						"h": 18
+					}
+				},
+				{
+					"filename": "asteroids/grey/tiny",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 18,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 18,
+						"h": 18
+					},
+					"frame": {
+						"x": 223,
+						"y": 183,
+						"w": 18,
+						"h": 18
 					}
 				}
 			]
@@ -141,6 +288,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f170ab4d2ae201a0cf3cecf4d3c60261:c4fa16684299bc63cef02a0b928b6b04:d80676a5e85c5032e708efda4f84d8e3$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a6ac3f18cb93c6f5d873ab99748f4936:e56b811824f3c341134988cb90d073c9:d80676a5e85c5032e708efda4f84d8e3$"
 	}
 }
