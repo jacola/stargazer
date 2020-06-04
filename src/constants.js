@@ -11,5 +11,5 @@ export const CONSTANTS = {
 export const LABELS = {
   PLAYER: "PLAYER",
   STAR: "STAR",
-  ASTROID: "ASTROID",
+  ASTEROID: "ASTEROID",
 };

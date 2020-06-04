@@ -1,5 +1,7 @@
 import { LABELS, SCENES, CONSTANTS } from "../constants";
 
+const ENTITY_LIST = [LABELS.STAR, LABELS.STAR, LABELS.ASTEROID];
+
 export class GameScene extends Phaser.Scene {
   constructor() {
     super({ key: SCENES.GAME });
@@ -55,7 +57,11 @@ export class GameScene extends Phaser.Scene {
           const wall = bodyA.isWall ? bodyA : bodyB;
           const obj = bodyA.isWall ? bodyB : bodyA;
 
-          if (wall.label === "bottom" && obj.parent.label === LABELS.STAR) {
+          if (
+            wall.label === "bottom" &&
+            (obj.parent.label === LABELS.STAR ||
+              obj.parent.label === LABELS.ASTEROID)
+          ) {
             this.removeEntity(obj);
           }
         }
@@ -116,20 +122,38 @@ export class GameScene extends Phaser.Scene {
     if (Date.now() > this.lastSpawn + this.spawnRate) {
       const { width } = this.cameras.main;
 
-      const newStar = this.matter.add.sprite(
-        width * Math.random(),
-        -80,
-        "entities",
-        "items/stars/gold",
-        {
-          label: LABELS.STAR,
-          id: Math.floor(Math.random() * 1000000),
-          shape: this.cache.json.get("shapes").gold,
-        }
-      );
-      newStar.setFrictionAir(0);
-      newStar.setVelocityY(3);
-      entities.push(newStar);
+      const newType =
+        ENTITY_LIST[Math.floor(Math.random() * ENTITY_LIST.length)];
+
+      let newObject = null;
+      if (newType === LABELS.STAR) {
+        newObject = this.matter.add.sprite(
+          width * Math.random(),
+          -80,
+          "entities",
+          "items/stars/gold",
+          {
+            label: LABELS.STAR,
+            id: Math.floor(Math.random() * 1000000),
+            shape: this.cache.json.get("shapes").gold,
+          }
+        );
+      } else if (newType === LABELS.ASTEROID) {
+        newObject = this.matter.add.sprite(
+          width * Math.random(),
+          -80,
+          "entities",
+          "asteroids/brown/big1",
+          {
+            label: LABELS.ASTEROID,
+            id: Math.floor(Math.random() * 1000000),
+            shape: this.cache.json.get("shapes").big1,
+          }
+        );
+      }
+      newObject.setFrictionAir(0);
+      newObject.setVelocityY(3);
+      entities.push(newObject);
       this.lastSpawn = Date.now();
     }
   }
