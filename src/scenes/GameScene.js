@@ -15,8 +15,27 @@ export class GameScene extends Phaser.Scene {
     this.lastSpawn = Date.now();
     this.spawnRate = 500;
     this.entities = [];
+    this.playing = false;
 
-    this.add.rectangle(width / 2, height / 2, width, height, 0x111111);
+    const bg = this.add.rectangle(
+      width / 2,
+      height / 2,
+      width,
+      height,
+      0x111111
+    );
+    const touchToStart = this.add
+      .sprite(width / 2, height / 2, "entities", "UI/start")
+      .setScale(4);
+
+    bg.setInteractive();
+    bg.on("pointerup", () => {
+      if (!this.playing) {
+        this.playing = true;
+        this.start = Date.now();
+        touchToStart.setVisible(false);
+      }
+    });
 
     const bounds = this.matter.world.setBounds(0, -100, width, height + 200);
     for (let key in bounds.walls) {
@@ -113,6 +132,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   update() {
+    if (!this.playing) {
+      return;
+    }
+
     const { pointer, ship } = this;
     if (pointer.isDown) {
       const difX = pointer.x - ship.x;
@@ -169,7 +192,7 @@ export class GameScene extends Phaser.Scene {
         );
       }
       newObject.setFrictionAir(0);
-      newObject.setVelocityY(3);
+      newObject.setVelocityY(3 + (Date.now() - this.start) / 5000);
       entities.push(newObject);
       this.lastSpawn = Date.now();
     }

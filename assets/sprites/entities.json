@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 247,
-				"h": 240
+				"h": 251
 			},
 			"scale": 1,
 			"frames": [
@@ -241,6 +241,90 @@
 					}
 				},
 				{
+					"filename": "UI/start",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 57,
+						"h": 9
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 57,
+						"h": 9
+					},
+					"frame": {
+						"x": 1,
+						"y": 241,
+						"w": 57,
+						"h": 9
+					}
+				},
+				{
+					"filename": "UI/highscores",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 55,
+						"h": 9
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 55,
+						"h": 9
+					},
+					"frame": {
+						"x": 60,
+						"y": 241,
+						"w": 55,
+						"h": 9
+					}
+				},
+				{
+					"filename": "UI/playagain",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 9
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 9
+					},
+					"frame": {
+						"x": 117,
+						"y": 241,
+						"w": 50,
+						"h": 9
+					}
+				},
+				{
+					"filename": "UI/score",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 28,
+						"h": 9
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 28,
+						"h": 9
+					},
+					"frame": {
+						"x": 169,
+						"y": 241,
+						"w": 28,
+						"h": 9
+					}
+				},
+				{
 					"filename": "asteroids/brown/tiny",
 					"rotated": false,
 					"trimmed": false,
@@ -288,6 +372,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a6ac3f18cb93c6f5d873ab99748f4936:e56b811824f3c341134988cb90d073c9:d80676a5e85c5032e708efda4f84d8e3$"
+		"smartupdate": "$TexturePacker:SmartUpdate:98ef7a72f0b7b6bd4a7fe034aa32ce03:eafab75dfe3871d39a0d8a0291876c0a:d80676a5e85c5032e708efda4f84d8e3$"
 	}
 }
