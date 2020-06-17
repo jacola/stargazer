@@ -1,6 +1,12 @@
 import { SCENES } from "../constants";
 
-// /Users/jl/devel/stargazer/src/assets/sprites/entities.png
+import font_png from "../assets/starfont.png";
+import font_xml from "../assets/starfont.xml";
+
+import shapes_json from "../assets/shapes.json";
+
+import entities_png from "../assets/sprites/entities.png";
+import entities_json from "../assets/sprites/entities.json";
 
 export class LoadScene extends Phaser.Scene {
   constructor() {
@@ -37,19 +43,9 @@ export class LoadScene extends Phaser.Scene {
       .setOrigin(0, 0.5);
 
     // Load everything here
-    this.load.atlas(
-      "entities",
-      "./assets/sprites/entities.png",
-      "./assets/sprites/entities.json"
-    );
-
-    this.load.json("shapes", "./assets/shapes.json");
-
-    this.load.bitmapFont(
-      "Starfont",
-      "./assets/starfont.png",
-      "./assets/starfont.xml"
-    );
+    this.load.atlas("entities", entities_png, entities_json);
+    this.load.json("shapes", shapes_json);
+    this.load.bitmapFont("Starfont", font_png, font_xml);
 
     // Updates
     this.load.on("progress", (percent) => {

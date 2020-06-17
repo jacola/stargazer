@@ -27,10 +27,10 @@ class PhaserGame extends Phaser.Game {
   constructor() {
     const isMobile = mobileCheck();
     const width = isMobile
-      ? Math.min(window.availWidth, window.availHeight)
+      ? Math.min(window.innerWidth, window.innerHeight)
       : 450;
     const height = isMobile
-      ? Math.max(window.availWidth, window.availHeight)
+      ? Math.max(window.innerWidth, window.innerHeight)
       : 800;
 
     const config = {
@@ -42,7 +42,7 @@ class PhaserGame extends Phaser.Game {
       physics: {
         default: "matter",
         matter: {
-          debug: true,
+          debug: false,
           gravity: {
             x: 0,
             y: 0,
