@@ -116,12 +116,12 @@ export class GameScene extends Phaser.Scene {
 
     // Score UI
     this.add
-      .sprite(width - 5, 5, "entities", "items/stars/gold")
+      .sprite(width - 5, 35, "entities", "items/stars/gold")
       .setOrigin(1, 0)
       .setDepth(1000)
       .setScale(2 / 3);
 
-    this.scoreLabel = this.add.bitmapText(width - 30, 5, "Starfont", "");
+    this.scoreLabel = this.add.bitmapText(width - 30, 35, "Starfont", "");
     this.scoreLabel.setOrigin(1, 0).setDepth(1000);
   }
 
