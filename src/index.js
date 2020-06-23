@@ -23,15 +23,34 @@ const mobileCheck = () => {
   return check;
 };
 
+function isIPad() {
+  var iDevices = ["iPad Simulator", "iPad"];
+
+  if (navigator.platform) {
+    while (iDevices.length) {
+      if (navigator.platform === iDevices.pop()) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 class PhaserGame extends Phaser.Game {
   constructor() {
     const isMobile = mobileCheck();
-    const width = isMobile
+    let width = isMobile
       ? Math.min(screen.availWidth, screen.availHeight)
       : 450;
-    const height = isMobile
+    let height = isMobile
       ? Math.max(screen.availWidth, screen.availHeight)
       : 800;
+
+    if (isIPad) {
+      width = window.innerWidth;
+      height = window.innerHeight;
+    }
 
     const config = {
       type: Phaser.AUTO,

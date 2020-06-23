@@ -121,7 +121,7 @@ export class GameScene extends Phaser.Scene {
       .setDepth(1000)
       .setScale(2 / 3);
 
-    this.scoreLabel = this.add.bitmapText(width - 30, 35, "Starfont", "");
+    this.scoreLabel = this.add.bitmapText(width - 30, 35, "Starfont", "0");
     this.scoreLabel.setOrigin(1, 0).setDepth(1000);
   }
 
